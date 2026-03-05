@@ -2,12 +2,13 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   /* config options here */
-  eslint: {
-    ignoreDuringBuilds: true,
-    dirs: ['src'], // Only lint src directory
+  compiler: {
+    // Remove console logs in production
+    removeConsole: process.env.NODE_ENV === "production",
   },
-  typescript: {
-    ignoreBuildErrors: true, // Ignore TypeScript errors during build
+  // Ensure modern CSS features are transpiled
+  experimental: {
+    optimizeCss: true,
   },
 };
 
